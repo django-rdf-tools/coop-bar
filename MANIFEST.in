@@ -1,0 +1,3 @@
+recursive-include admin_bar/locale *.po *.mo
+recursive-include admin_bar/static/css *.css
+recursive-include admin_bar/templates *.html *.js
