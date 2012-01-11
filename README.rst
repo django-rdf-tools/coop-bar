@@ -26,7 +26,7 @@ coop_bar tries to provide a simple and configurable mechanism
 
 Quick start
 ------------------------------------
-In settings.py, add coop_bar to the INSTALLED_APPS and os.path.abspath(PROJECT_PATH+'/coop_bar/static/') to the STATICFILES_DIRS
+In settings.py, add 'coop_bar' to the INSTALLED_APPS and os.path.abspath(PROJECT_PATH+'/coop_bar/static/') to the STATICFILES_DIRS
 
 In urls.py add (r'^coop_bar/', include('coop_bar.urls')) to the urlpatterns
 
