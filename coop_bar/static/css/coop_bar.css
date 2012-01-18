@@ -18,11 +18,13 @@ background: -moz-linear-gradient(#FFFFFF, #ABABAB);
 background: -ms-linear-gradient(#FFFFFF, #ABABAB);
 background: -o-linear-gradient(#FFFFFF, #ABABAB);
 background: linear-gradient(#FFFFFF, #ABABAB);
-	padding: 10px;
+	padding: 20px 15px;
 	right: 10px;
 	text-align: center;
 	z-index: 99999;
 	font: 12px  Tahoma, Arial,"Trebuchet MS", Trebuchet;
+		cursor: move;
+
 }
 
 #coop-bar a {
@@ -51,10 +53,13 @@ background: linear-gradient(#FFFFFF, #ABABAB);
 	border: 1px solid #fff;
 	background-color: rgba(255,255,255,0.5);
 	color: #3b416d;
+	box-shadow: #777 0 0 7px;
 }
 
 #coop-bar .separator {
 	margin: 4px 0 4px 0;
 	width: 100%;
 	border: 1px solid #9b9c9c;
+	border-bottom-style: solid;
+	border-bottom-color: #e6e6e6;
 }
