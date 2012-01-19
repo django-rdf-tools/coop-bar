@@ -10,7 +10,7 @@
 border-radius: 4px;
 -webkit-box-shadow: #666 0px 2px 3px;
 -moz-box-shadow: #666 0px 2px 3px;
-box-shadow: #666 0px 2px 3px;
+box-shadow: #555 0px 2px 5px;
 background: #FFFFFF;
 background: -webkit-gradient(linear, 0 0, 0 bottom, from(#FFFFFF), to(#ABABAB));
 background: -webkit-linear-gradient(#FFFFFF, #ABABAB);
@@ -20,20 +20,20 @@ background: -o-linear-gradient(#FFFFFF, #ABABAB);
 background: linear-gradient(#FFFFFF, #ABABAB);
 	padding: 20px 15px;
 	right: 10px;
-	text-align: center;
+	text-align: left;
 	z-index: 99999;
 	font: 12px  Tahoma, Arial,"Trebuchet MS", Trebuchet;
 		cursor: move;
 
 }
 
+
 #coop-bar a {
     text-decoration: none;
 	font-weight: bold;
 	display: block;
 	position: relative;
-	width: 100%;
-	padding-top: 1px;
+	padding-top: 3px;
 	padding-bottom: 3px;
 	color: #565656;
 	border: 1px solid rgba(255,255,255,0);
@@ -62,4 +62,8 @@ background: linear-gradient(#FFFFFF, #ABABAB);
 	border: 1px solid #9b9c9c;
 	border-bottom-style: solid;
 	border-bottom-color: #e6e6e6;
+}
+
+ .icon { padding-left: 23px; background-repeat: no-repeat;
+	background-position: 2px 2px;
 }
