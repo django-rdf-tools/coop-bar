@@ -64,8 +64,7 @@ In your base.html, add the following template tags::
 License
 =======
 
-`Fugue icon set`_  by Yusuke Kamiyamane. All rights reserved. Licensed under a Creative Commons Attribution 3.0 License.
+`Fugue icon set <http://p.yusukekamiyamane.com/>`_  by Yusuke Kamiyamane. All rights reserved. Licensed under a Creative Commons Attribution 3.0 License.
 
 coop_bar itself uses the same license as Django (BSD).
 
-.. _Fugue icon set?: http://p.yusukekamiyamane.com/
