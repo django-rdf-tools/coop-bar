@@ -5,11 +5,8 @@ Configurable toolbar
 Quick Start, Docs, Contributing
 -------------------------------
 
-* `What is coop_bar good for?`_
-* `Quickstart`_
-
-.. _What is coop_bar good for?: #good-for
-.. _Quick start?: #quick-start
+* :ref:`good-for`
+* :ref:`quick-start`
 
 .. _good-for:
 
