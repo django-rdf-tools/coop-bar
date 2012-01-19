@@ -25,6 +25,7 @@ class CoopBarHeaderNode(template.Node):
         request = context["request"]
         STATIC_URL = context["STATIC_URL"]
         headers = [u'<link rel="stylesheet" href="{0}css/coop_bar.css" type="text/css" />'.format(STATIC_URL)]
+        headers += [u'<script src="{{STATIC_URL}}js/jquery-ui-1.8.14.custom.min.js"></script>'.format(STATIC_URL)]
         headers += CoopBar().get_headers(request, context)
         return "\n".join(headers)
 
