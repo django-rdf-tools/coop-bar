@@ -26,9 +26,9 @@ coop_bar tries to provide a simple and configurable mechanism
 
 Quick start
 ------------------------------------
-In settings.py, add 'coop_bar' to the INSTALLED_APPS and os.path.abspath(PROJECT_PATH+'/coop_bar/static/') to the STATICFILES_DIRS
-
-In urls.py add (r'^coop_bar/', include('coop_bar.urls')) to the urlpatterns
+In settings.py, add 'coop_bar' (with an underscore) to the INSTALLED_APPS 
+Under Django 1.3, the static folder should be found automatically, as the templates folder
+In urls.py add (r'^coop_bar/', include('coop_bar.urls')) to your urlpatterns
 
 For each app needing to add links to coop_bar, create a coop_bar_cfg.py file
 In this file, add a load_commands function as follows ::
@@ -60,7 +60,10 @@ In your base.html, add the following template tags::
         {% coop_bar %}
     </body>
 
+
 License
 =======
 
-coop_bar uses the same license as Django (BSD-like).
+`Fugue icon set<http://p.yusukekamiyamane.com/>`  by Yusuke Kamiyamane. All rights reserved. Licensed under a Creative Commons Attribution 3.0 License.
+
+coop_bar itself uses the same license as Django (BSD).
