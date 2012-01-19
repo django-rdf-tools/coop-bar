@@ -22,8 +22,11 @@ def coop_bar(parser, token):
 
 class CoopBarHeaderNode(template.Node):
     def render(self, context):
+        request = context["request"]
         STATIC_URL = context["STATIC_URL"]
-        return u'<link rel="stylesheet" href="{0}css/coop_bar.css" type="text/css" />'.format(STATIC_URL)
+        headers = [u'<link rel="stylesheet" href="{0}css/coop_bar.css" type="text/css" />'.format(STATIC_URL)]
+        headers += CoopBar().get_headers(request, context)
+        return "\n".join(headers)
 
 @register.tag
 def coop_bar_headers(parser, token):
