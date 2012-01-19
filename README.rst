@@ -5,8 +5,11 @@ Configurable toolbar
 Quick Start, Docs, Contributing
 -------------------------------
 
-* :ref:`good-for`
-* :ref:`quick-start`
+* `What is coop_bar good for?`_
+* `Quick start`_
+
+.. _What is coop_bar good for?: #good-for
+.. _Quick start?: #quick-start
 
 .. _good-for:
 
@@ -61,6 +64,6 @@ In your base.html, add the following template tags::
 License
 =======
 
-`Fugue icon set<http://p.yusukekamiyamane.com/>`_  by Yusuke Kamiyamane. All rights reserved. Licensed under a Creative Commons Attribution 3.0 License.
+`Fugue icon set<http://p.yusukekamiyamane.com/>`  by Yusuke Kamiyamane. All rights reserved. Licensed under a Creative Commons Attribution 3.0 License.
 
 coop_bar itself uses the same license as Django (BSD).
