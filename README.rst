@@ -1,9 +1,5 @@
-Configurable toolbar
+coop-bar, configurable toolbar
 ===============================================
-
-
-Quick Start, Docs, Contributing
--------------------------------
 
 * `What is coop_bar good for?`_
 * `Quick start`_
@@ -66,5 +62,6 @@ License
 
 `Fugue icon set <http://p.yusukekamiyamane.com/>`_  by Yusuke Kamiyamane. All rights reserved. Licensed under a Creative Commons Attribution 3.0 License.
 
-coop_bar itself uses the same license as Django (BSD).
+coop-bar itself uses the same license as Django (BSD).
 
+coop-bar development was funded by `CREDIS <http://credis.org/>`_, FSE (European Social Fund) and Conseil Régional d'Auvergne.
