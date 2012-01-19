@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-VERSION = (0, 2)
+VERSION = (0, 3)
 
 def get_version():
     return '%s.%s' % (VERSION[0], VERSION[1])
@@ -17,6 +17,7 @@ class CoopBar:
         self.__dict__ = self.__we_are_all_one #Borg pattern
         
         self._callbacks = []
+        self._headers = []
         
         for app in settings.INSTALLED_APPS:
             try:
@@ -30,6 +31,9 @@ class CoopBar:
                     loader_fct(self)
             except ImportError:
                 pass
+        
+    def register_header(self, callback):
+        self._headers.append(callback)
         
     def register_command(self, callback):
         self._callbacks.append(callback)
@@ -53,5 +57,14 @@ class CoopBar:
                 html = c(request, context)
             if html:
                 commands.append(html)
+        if commands and commands[-1]==separator:
+            commands = commands[:-1]
         return commands
     
+    def get_headers(self, request, context):
+        headers = []
+        for c in self._headers:
+            html = c(request, context)
+            if html:
+                headers.append(html)
+        return headers
