@@ -4,7 +4,8 @@
 #coop-bar {
 	position: fixed;
 	top: 10px;
-	width: 150px;
+	width: 160px;
+	font-weight: lighter;
 	-webkit-border-radius: 4px;
 -moz-border-radius: 4px;
 border-radius: 4px;
@@ -22,7 +23,7 @@ background: linear-gradient(#FFFFFF, #ABABAB);
 	right: 10px;
 	text-align: left;
 	z-index: 99999;
-	font: 12px  Tahoma, Arial,"Trebuchet MS", Trebuchet;
+	font: 12px Tahoma, Arial,"Trebuchet MS", Trebuchet;
 		cursor: move;
 
 }
