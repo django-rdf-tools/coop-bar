@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-VERSION = (0, 3, 1)
+VERSION = (0, 3, 2)
 
 def get_version():
     return '%s.%s.%s' % (VERSION[0], VERSION[1], VERSION[2])
@@ -16,21 +16,31 @@ class CoopBar:
     def __init__(self):
         self.__dict__ = self.__we_are_all_one #Borg pattern
         
-        self._callbacks = []
-        self._headers = []
-        
-        for app in settings.INSTALLED_APPS:
-            try:
-                #load dynamically the admin_bar module of all apps
-                app_admin_bar_module = import_module(app+'.coop_bar_cfg')
-                if hasattr(app_admin_bar_module, 'load_commands'):
-                    #call the load_commands function in this module
-                    #This function should call the AdminBar:register_command for
-                    #every item it want to insert in the bar
-                    loader_fct = getattr(app_admin_bar_module, 'load_commands')
-                    loader_fct(self)
-            except ImportError:
-                pass
+        if not self.__dict__: #Don't reload for each instance
+            self._callbacks = []
+            self._headers = []
+            
+            if hasattr(settings, 'COOPBAR_MODULES'):
+                for module_name in settings.COOPBAR_MODULES:
+                    try:
+                        app_admin_bar_module = import_module(module_name)
+                        loader_fct = getattr(app_admin_bar_module, 'load_commands')
+                        loader_fct(self)
+                    except ImportError:
+                        raise ImportError(u"coop_bar : error while loading '{0}'. Check COOPBAR_MODULES in settings".format(module_name)) 
+            else:
+                for app in settings.INSTALLED_APPS:
+                    try:
+                        #load dynamically the admin_bar module of all apps
+                        app_admin_bar_module = import_module(app+'.coop_bar_cfg')
+                        if hasattr(app_admin_bar_module, 'load_commands'):
+                            #call the load_commands function in this module
+                            #This function should call the AdminBar:register_command for
+                            #every item it want to insert in the bar
+                            loader_fct = getattr(app_admin_bar_module, 'load_commands')
+                            loader_fct(self)
+                    except ImportError:
+                        pass
         
     def register_header(self, callback):
         self._headers.append(callback)
