@@ -24,6 +24,7 @@ setup(
     author = 'Luc Jean',
     author_email = 'ljean@apidev.fr',
     license ='BSD',
+    url="https://github.com/quinode/coop-bar/",
     download_url = "https://github.com/quinode/coop-bar/tarball/master",
     zip_safe = False,
     classifiers = [
