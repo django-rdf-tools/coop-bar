@@ -64,4 +64,4 @@ License
 
 coop-bar itself uses the same license as Django (BSD).
 
-coop-bar development was funded by `CREDIS <http://credis.org/>`_, FSE (European Social Fund) and Conseil Régional d'Auvergne.
+coop-bar development was funded by `CREDIS <http://credis.org/>`_, FSE (European Social Fund) and Conseil Regional d'Auvergne.
