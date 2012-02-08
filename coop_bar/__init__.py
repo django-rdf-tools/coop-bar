@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-VERSION = (0, 3, 2)
+VERSION = (0, 3, 3)
 
 def get_version():
     return '%s.%s.%s' % (VERSION[0], VERSION[1], VERSION[2])
@@ -50,6 +50,12 @@ class CoopBar:
         
     def register_separator(self):
         self._callbacks.append(None)
+        
+    def register(self, list_of_list_of_cmds):
+        for list_of_cmds in list_of_list_of_cmds:
+            for callback in list_of_cmds:
+                self.register_command(callback)
+            self.register_separator()
                 
     def get_commands(self, request, context):
         commands = []
@@ -78,3 +84,4 @@ class CoopBar:
             if html:
                 headers.append(html)
         return headers
+
