@@ -4,7 +4,7 @@ from django import template
 from django.template.loader import get_template
 from django.template import Context
 register = template.Library()
-from coop_bar import CoopBar
+from coop_bar.bar import CoopBar
 from django.conf import settings
 
 class CoopBarNode(template.Node):

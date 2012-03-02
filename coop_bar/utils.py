@@ -12,3 +12,4 @@ def make_link(url, label, icon, id=None, classes=None):
     return u'<a href="{url}" style="background-image:url({icon_url})"{args}>{label}</a>'.format(
         url=url, icon_url=icon_url, args=u' '.join(extra_args), label=label
     )
+
