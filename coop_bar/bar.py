@@ -13,7 +13,7 @@ class CoopBar:
             self._callbacks = []
             self._headers = []
             
-            if hasattr(settings, 'COOPBAR_MODULES'):
+            if hasattr(settings, 'COOP_BAR_MODULES'):
                 for module_name in settings.COOPBAR_MODULES:
                     try:
                         app_admin_bar_module = import_module(module_name)
