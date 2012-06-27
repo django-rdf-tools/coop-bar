@@ -33,7 +33,7 @@ In this file, add a load_commands function as follows ::
     from django.utils.translation import ugettext as _
     
     def django_admin_command(request, context):
-        if request.user.is_staff:
+        if request and request.user.is_staff: #request might be None
             return u'<a href="{0}">{1}</a>'.format(reverse("admin:index"), _('Admin'))
     
     def load_commands(coop_bar):

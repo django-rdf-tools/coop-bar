@@ -10,7 +10,7 @@ from django.conf import settings
 class CoopBarNode(template.Node):
     
     def render(self, context):
-        request = context["request"]
+        request = context.get("request", None)
         commands = CoopBar().get_commands(request, context)
         if commands: #hide admin-bar if nothing to display
             t = get_template("coop_bar.html")
@@ -23,7 +23,7 @@ def coop_bar(parser, token):
 
 class CoopBarHeaderNode(template.Node):
     def render(self, context):
-        request = context["request"]
+        request = context.get("request", None)
         STATIC_URL = context["STATIC_URL"]
         headers = [u'<link rel="stylesheet" href="{0}css/coop_bar.css" type="text/css" />'.format(STATIC_URL)]
         headers += [u'<script src="'+settings.STATIC_URL+'js/jquery-ui-1.8.14.custom.min.js"></script>'.format(STATIC_URL)]
