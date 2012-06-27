@@ -8,7 +8,7 @@ from coop_bar.bar import CoopBar
 from django.conf import settings
 
 class CoopBarNode(template.Node):
-    
+
     def render(self, context):
         request = context.get("request", None)
         commands = CoopBar().get_commands(request, context)
@@ -20,6 +20,7 @@ class CoopBarNode(template.Node):
 @register.tag
 def coop_bar(parser, token):
     return CoopBarNode()
+
 
 class CoopBarHeaderNode(template.Node):
     def render(self, context):
