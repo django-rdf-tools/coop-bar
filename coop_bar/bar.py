@@ -60,7 +60,7 @@ class CoopBar:
         for c in self._callbacks:
             if c == None:
                 #Replace None by separator. Avoid 2 following separators
-                if commands and commands[-1]!=separator:
+                if commands and commands[-1] != separator:
                     html = separator
                 else:
                     html = ''
