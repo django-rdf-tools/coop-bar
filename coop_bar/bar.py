@@ -13,9 +13,9 @@ class CoopBar:
             self._callbacks = []
             self._headers = []
             self._footer = []
-
-            if hasattr(settings, 'COOP_BAR_MODULES'):
-                for module_name in settings.COOPBAR_MODULES:
+            coop_bar_modules = getattr(settings, 'COOP_BAR_MODULES', None)
+            if coop_bar_modules:
+                for module_name in coop_bar_modules:
                     try:
                         app_admin_bar_module = import_module(module_name)
                         loader_fct = getattr(app_admin_bar_module, 'load_commands')
