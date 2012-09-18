@@ -61,53 +61,8 @@ $(document).ready(function(){
             $.colorbox.close();
             $("#coopbar_medialibrary").click();
         }
-    })
+    });
         ''']
-
-        # --------- this block only added in edit_mode
-
-        if 'edit_mode' in context and context['edit_mode']:
-            footer += [u'''
-    $("#coop-bar a.slide").pageSlide({width:'350px', direction:'right'});
-    var toggle_save = function() {
-        if (!$(".show-dirty").is(":visible")) {
-            $(".show-clean").hide();
-            $(".show-dirty").show();
-            $("a.alert_on_click").bind('click', function(event) {
-                return confirm("''' + _(u'Your modifications are not saved and will be lost. Continue?') + u'''");
-            });
-        };
-            ''']
-            if 'draft' in context:
-                footer += [u'''
-        $(".publish").hide();
-                ''']
-
-
-            footer += [u'''
-    }
-    $(".show-dirty").hide();
-    Aloha.bind('aloha-editable-deactivated', function(event, eventProperties){
-        toggle_save();
-    });
-    $(".djaloha-editable").keypress(function() {
-        toggle_save();
-    });
-
-    $("a.update-logo img").change(toggle_save);
-    $(".article select").change(toggle_save);
-    $(".article input").change(toggle_save);
-
-    //move the form submit to the coop_bar
-    $("form#cms_form input[type='submit']").hide();
-    $('#coopbar_save').click(function(event) {
-        $("form#cms_form").submit();
-        event.preventDefault();
-    });
-            ''']
-        # -------- end of "if edit_mode"
-
-
 
         if 'messages' in context:
             from django.template.defaultfilters import escapejs
@@ -116,20 +71,16 @@ $(document).ready(function(){
                 footer += [u'''
     humanMsg.displayMsg("''' + escapejs(unicode(m)) + u'''", "''' + unicode(m.tags) + '''");
                 ''']
-
             if not bar_settings.DISPLAY_MESSAGES_LOG:
                 footer += [u'''
     $("#humanMsgLog p").hide();
                 ''']
 
-    # -------- end of jquery block
-
-        footer += [u'''
-});
-</script>
-        ''']
 
         footer += CoopBar().get_footer(request, context)
+        footer += [u'''
+});
+</script>''']
         return "\n".join(footer)
 
 

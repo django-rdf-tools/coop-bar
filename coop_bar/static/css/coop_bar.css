@@ -1,6 +1,12 @@
 /* @override http://localhost:8000/static/css/coop_bar.css */
 
 /* */
+
+
+.aloha-sidebar-handle{
+    display: none;
+}
+
 #coop-bar {
 	position: fixed;
 	top: 10px;
@@ -127,7 +133,7 @@ div.humanMsg.error {
 }
 
 #humanMsgLog p {
-	
+
     position: relative;
     width: 70px;
     margin: 0;
@@ -141,7 +147,7 @@ div.humanMsg.error {
 	font-weight: bold;
 	font-size: 10px;
 	left: 25px;
-	
+
 -webkit-border-top-left-radius: 5px;
 -webkit-border-top-right-radius: 5px;
 -moz-border-radius-topleft: 5px;
