@@ -9,7 +9,7 @@ coop-bar, configurable toolbar
 
 .. _good-for:
 
-.. figure::  http://github.com/quinode/coop-bar/docs/coop_bar.png
+.. figure::  https://raw.github.com/quinode/coop-bar/master/docs/coop_bar.png
    :align:   left
 
 What is coop_bar good for?
@@ -66,7 +66,7 @@ In your base.html, add the following template tags::
 Humanized Messages
 ------------------------------------
 
-.. figure::  http://github.com/quinode/coop-bar/docs/humanmsg.png
+.. figure::  https://raw.github.com/quinode/coop-bar/master/docs/humanmsg.png
    :align:   center
 
 Coop-bar takes also care of providing a nice display of django session messages.
