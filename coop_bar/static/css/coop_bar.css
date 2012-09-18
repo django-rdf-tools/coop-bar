@@ -90,7 +90,12 @@ background: linear-gradient(#FFFFFF, #ABABAB);
     opacity: 0;
     z-index: 100000;
     font: bold 24px/50px "Trebuchet MS", Trebuchet, Tahoma, Arial;
-	background-color: #919191;
+-webkit-border-radius: 9px;
+-moz-border-radius: 9px;
+border-radius: 9px;
+-moz-box-shadow: 3px 3px 5px #888;
+-webkit-box-shadow: 3px 3px 5px #888;
+box-shadow: 3px 3px 5px #888;
 }
 
 div.humanMsg.success {
@@ -101,12 +106,6 @@ div.humanMsg.error {
     background-color: #99332d;
 }
 
-.humanMsg .round {
-    border-left: solid 2px white;
-    border-right: solid 2px white;
-    font-size: 1px;
-    height: 2px;
-    }
 
 .humanMsg p {
     padding: .3em;
@@ -122,15 +121,14 @@ div.humanMsg.error {
     color: white;
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    width: 100px;
     max-height: 200px;
-    display: none;
-    z-index: 10000;
-	background-color: #929292;
+    display: inline-block;
+	right: 0;
 }
 
 #humanMsgLog p {
+	
     position: relative;
     width: 100px;
     margin: 0;

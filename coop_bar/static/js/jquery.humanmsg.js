@@ -15,10 +15,10 @@ var humanMsg = {
 
 		// The text on the Log tab
 		if (logName == undefined)
-			logName = 'Historique';
+			logName = 'Message Log';
 
 		// Opacity of the message
-		humanMsg.msgOpacity = .8;
+		humanMsg.msgOpacity = .9;
 
 		if (msgOpacity != undefined)
 			humanMsg.msgOpacity = parseFloat(msgOpacity);
