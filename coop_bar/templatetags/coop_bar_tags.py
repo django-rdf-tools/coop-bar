@@ -8,11 +8,7 @@ register = template.Library()
 from coop_bar.bar import CoopBar
 from django.conf import settings
 STATIC_URL = getattr(settings, 'STATIC_URL', '')
-
-
-from logging import getLogger
-logger = getLogger('coop')
-
+from coop_bar import settings as bar_settings
 
 class CoopBarNode(template.Node):
     def render(self, context):
@@ -41,7 +37,7 @@ class CoopBarHeaderNode(template.Node):
         headers += [u'<script type="text/javascript" src="%sjs/jquery.pageslide.js"></script>' % STATIC_URL]
         headers += [u'<link rel="stylesheet" href="%scss/colorbox.css" type="text/css" />' % STATIC_URL]
         if 'messages' in context:
-            headers += [u'<script type="text/javascript" src="%sjs/humanmsg.js"></script>' % STATIC_URL]
+            headers += [u'<script type="text/javascript" src="%sjs/jquery.humanmsg.js"></script>' % STATIC_URL]
         headers += CoopBar().get_headers(request, context)
         return "\n".join(headers)
 
@@ -68,13 +64,7 @@ $(document).ready(function(){
     })
         ''']
 
-        for param in ('editable', 'form', 'edit_mode', ):
-            if param in context:
-                logger.debug( param + ' ? ' + str(context[param]))
-
         # --------- this block only added in edit_mode
-
-
 
         if 'edit_mode' in context and context['edit_mode']:
             footer += [u'''
@@ -92,6 +82,8 @@ $(document).ready(function(){
                 footer += [u'''
         $(".publish").hide();
                 ''']
+
+
             footer += [u'''
     }
     $(".show-dirty").hide();
@@ -115,12 +107,23 @@ $(document).ready(function(){
             ''']
         # -------- end of "if edit_mode"
 
+
+
         if 'messages' in context:
+            from django.template.defaultfilters import escapejs
             for m in context['messages']:
                 # TODO on utilise pas m.tags,
                 footer += [u'''
-    humanMsg.displayMsg("''' + unicode(m) + u'''");
-            ''']
+    humanMsg.displayMsg("''' + escapejs(unicode(m)) + u'''", "''' + unicode(m.tags) + '''");
+                ''']
+
+            if not bar_settings.DISPLAY_MESSAGES_LOG:
+                footer += [u'''
+    $("#humanMsgLog p").hide();
+                ''']
+
+    # -------- end of jquery block
+
         footer += [u'''
 });
 </script>

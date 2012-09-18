@@ -7,9 +7,9 @@ class CoopBar:
     __we_all_are_one = {}
 
     def __init__(self):
-        self.__dict__ = self.__we_all_are_one #Borg pattern
+        self.__dict__ = self.__we_all_are_one  # Borg pattern
 
-        if not self.__dict__: #Don't reload for each instance
+        if not self.__dict__:  # Don't reload for each instance
             self._callbacks = []
             self._headers = []
             self._footer = []
@@ -26,7 +26,7 @@ class CoopBar:
                 for app in settings.INSTALLED_APPS:
                     try:
                         #load dynamically the admin_bar module of all apps
-                        app_admin_bar_module = import_module(app+'.coop_bar_cfg')
+                        app_admin_bar_module = import_module(app + '.coop_bar_cfg')
                         if hasattr(app_admin_bar_module, 'load_commands'):
                             #call the load_commands function in this module
                             #This function should call the AdminBar:register_command for
