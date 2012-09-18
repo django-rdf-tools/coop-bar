@@ -57,12 +57,12 @@ var humanMsg = {
 		})
 
 		// Watch for mouse & keyboard in .5s
-		//humanMsg.t1 = setTimeout("humanMsg.bindEvents()", 700)
+		humanMsg.t1 = setTimeout("humanMsg.bindEvents()", 700)
 		// Remove message after 5s
-		//humanMsg.t2 = setTimeout("humanMsg.removeMsg()", 5000)
+		humanMsg.t2 = setTimeout("humanMsg.removeMsg()", 5000)
 	},
 
-/*
+
 	bindEvents: function() {
 	// Remove message if mouse is moved or key is pressed
 		jQuery(window)
@@ -81,7 +81,7 @@ var humanMsg = {
 		// If message is fully transparent, fade it out
 		if (jQuery('#'+humanMsg.msgID).css('opacity') == humanMsg.msgOpacity)
 			jQuery('#'+humanMsg.msgID).animate({ opacity: 0 }, 500, function() { jQuery(this).hide() })
-	}*/
+	}
 };
 
 jQuery(document).ready(function(){
