@@ -9,6 +9,8 @@ from coop_bar.bar import CoopBar
 from django.conf import settings
 STATIC_URL = getattr(settings, 'STATIC_URL', '')
 from coop_bar import settings as bar_settings
+from logging import getLogger
+
 
 class CoopBarNode(template.Node):
     def render(self, context):
@@ -64,20 +66,26 @@ $(document).ready(function(){
     });
         ''']
 
-        if 'messages' in context:
+        # messages framework display
+
+        logger = getLogger('default')
+        from django.contrib import messages
+        msg_list = messages.get_messages(request)
+
+        if msg_list:
             from django.template.defaultfilters import escapejs
-            for m in context['messages']:
+            for m in msg_list:
+                logger.debug(str(m))
                 # TODO on utilise pas m.tags,
                 footer += [u'''
-    humanMsg.displayMsg("''' + escapejs(unicode(m)) + u'''", "''' + unicode(m.tags) + '''");
+    humanMsg.displayMsg("''' + escapejs(unicode(m)) + u'''", "''' + unicode(m.tags) + u'''");
                 ''']
-            if not bar_settings.DISPLAY_MESSAGES_LOG:
+            if len(msg_list) > 1 or bar_settings.DISPLAY_MESSAGES_LOG:
                 footer += [u'''
-    $("#humanMsgLog p").hide();
+    $("#humanMsgLog p").show();
                 ''']
 
-
-        footer += CoopBar().get_footer(request, context)
+        footer += CoopBar().get_footer(request, context)  # TODO profiler cette méthode (cache ?)
         footer += [u'''
 });
 </script>''']
