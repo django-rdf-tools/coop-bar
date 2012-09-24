@@ -2,6 +2,9 @@
 
 from django.utils.importlib import import_module
 from django.conf import settings
+from logging import getLogger
+logger = getLogger('default')
+
 
 class CoopBar:
     __we_all_are_one = {}
@@ -13,28 +16,38 @@ class CoopBar:
             self._callbacks = []
             self._headers = []
             self._footer = []
-            coop_bar_modules = getattr(settings, 'COOP_BAR_MODULES', None)
-            if coop_bar_modules:
-                for module_name in coop_bar_modules:
-                    try:
-                        app_admin_bar_module = import_module(module_name)
-                        loader_fct = getattr(app_admin_bar_module, 'load_commands')
-                        loader_fct(self)
-                    except ImportError:
-                        raise ImportError(u"coop_bar : error while loading '{0}'. Check COOPBAR_MODULES in settings".format(module_name))
-            else:
-                for app in settings.INSTALLED_APPS:
-                    try:
-                        #load dynamically the admin_bar module of all apps
-                        app_admin_bar_module = import_module(app + '.coop_bar_cfg')
-                        if hasattr(app_admin_bar_module, 'load_commands'):
-                            #call the load_commands function in this module
-                            #This function should call the AdminBar:register_command for
-                            #every item it want to insert in the bar
-                            loader_fct = getattr(app_admin_bar_module, 'load_commands')
-                            loader_fct(self)
-                    except ImportError:
-                        pass
+            coop_bar_modules = getattr(settings, 'COOP_BAR_MODULES', ['coop_cms.coop_bar_cfg'])
+
+            # manual loading : just follow the settings
+
+            for module_name in coop_bar_modules:
+                #print 'trying to load : ' + module_name + '...'
+                try:
+                    toolbar_module = import_module(module_name)
+                    loader_fct = getattr(toolbar_module, 'load_commands')
+                    #print 'trying to load ' + str(loader_fct) + '...'
+                    loader_fct(self)
+                    #print 'toolbar links from ' + module_name + ' loaded!'
+
+                except ImportError, e:
+                    raise ImportError(u"coop_bar : error loading %s. Check COOP_BAR_MODULES in settings \n %s" % (module_name,e))
+
+            # automatic mode : looking for some coop_bar_cfg modules
+
+            # not yet usable until we have a real way to order collected commands (ex: with a "weight" parameter)
+            # else:
+            #     for app in settings.INSTALLED_APPS:
+            #         try:
+            #             #load dynamically the admin_bar module of all apps
+            #             app_admin_bar_module = import_module(app + '.coop_bar_cfg')
+            #             if hasattr(app_admin_bar_module, 'load_commands'):
+            #                 #call the load_commands function in this module
+            #                 #This function should call the AdminBar:register_command for
+            #                 #every item it want to insert in the bar
+            #                 loader_fct = getattr(app_admin_bar_module, 'load_commands')
+            #                 loader_fct(self)
+            #         except ImportError:
+            #             pass
 
     def register_header(self, callback):
         self._headers.append(callback)

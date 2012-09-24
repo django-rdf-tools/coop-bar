@@ -75,8 +75,7 @@ $(document).ready(function(){
         if msg_list:
             from django.template.defaultfilters import escapejs
             for m in msg_list:
-                logger.debug(str(m))
-                # TODO on utilise pas m.tags,
+                logger.debug(unicode(m))
                 footer += [u'''
     humanMsg.displayMsg("''' + escapejs(unicode(m)) + u'''", "''' + unicode(m.tags) + u'''");
                 ''']
