@@ -40,6 +40,7 @@ class CoopBarHeaderNode(template.Node):
         headers += [u'<link rel="stylesheet" href="%scss/colorbox.css" type="text/css" />' % STATIC_URL]
         if 'messages' in context:
             headers += [u'<script type="text/javascript" src="%sjs/jquery.humanmsg.js"></script>' % STATIC_URL]
+            headers += [u'<script type="text/javascript" src="%sjs/jquery.easing.1.3.js"></script>' % STATIC_URL]
         headers += CoopBar().get_headers(request, context)
         return "\n".join(headers)
 
